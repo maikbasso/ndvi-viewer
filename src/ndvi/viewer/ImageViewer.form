@@ -50,7 +50,7 @@
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
           <Component id="jPanel2" max="32767" attributes="0"/>
-          <Component id="jSP" alignment="0" max="32767" attributes="0"/>
+          <Component id="jSP" alignment="0" max="-2" attributes="0"/>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
@@ -58,7 +58,7 @@
           <Group type="102" alignment="1" attributes="0">
               <Component id="jPanel2" min="-2" pref="52" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
-              <Component id="jSP" pref="397" max="32767" attributes="0"/>
+              <Component id="jSP" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -123,6 +123,11 @@
       </SubComponents>
     </Container>
     <Container class="javax.swing.JScrollPane" name="jSP">
+      <Properties>
+        <Property name="alignmentX" type="float" value="0.0"/>
+        <Property name="alignmentY" type="float" value="0.0"/>
+        <Property name="autoscrolls" type="boolean" value="true"/>
+      </Properties>
 
       <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
     </Container>

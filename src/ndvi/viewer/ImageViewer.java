@@ -122,6 +122,10 @@ public class ImageViewer extends javax.swing.JFrame implements MouseListener, Mo
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
+        jSP.setAlignmentX(0.0F);
+        jSP.setAlignmentY(0.0F);
+        jSP.setAutoscrolls(true);
+
         jMenu1.setText("File");
 
         jMIOpen.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_O, java.awt.event.InputEvent.CTRL_MASK));
@@ -142,14 +146,14 @@ public class ImageViewer extends javax.swing.JFrame implements MouseListener, Mo
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(jSP)
+            .addComponent(jSP, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jSP, javax.swing.GroupLayout.DEFAULT_SIZE, 397, Short.MAX_VALUE))
+                .addComponent(jSP, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         pack();
@@ -162,20 +166,23 @@ public class ImageViewer extends javax.swing.JFrame implements MouseListener, Mo
         if(jfc.showOpenDialog(jMenu1) == JFileChooser.APPROVE_OPTION){
             //get selected file name [i.e., complete file path]
             File f = jfc.getSelectedFile();
-            
-            //set icon
-            this.jlab.setIcon(new ImageIcon(f.toString()));
-            
-            //alignment
-            this.jlab.setHorizontalAlignment(JLabel.CENTER);
-            
-            //add jLabel to scroll pane
-            jSP.getViewport().add(this.jlab);
-            
+                     
             try {
                 //load image data
                 BufferedImage buff = ImageIO.read(f);
+
+                //set jlabel size
+                jlab.setSize(buff.getWidth(), buff.getHeight());
+                //alignment
+                this.jlab.setHorizontalAlignment(JLabel.CENTER);
+                //set icon
+                this.jlab.setIcon(new ImageIcon(f.toString()));
+
+                //add jLabel to scroll pane
+                jSP.setSize(buff.getWidth(), buff.getHeight());
+                jSP.getViewport().add(this.jlab);           
                 
+                // create ndvicalc object
                 this.ndviCalc = new NDVICalc(buff);
                 
                 //set results for all image
