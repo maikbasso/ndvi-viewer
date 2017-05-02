@@ -195,7 +195,7 @@ public class ImageViewer extends javax.swing.JFrame implements MouseListener, Mo
             jLResults.setText("GNDVI: " + this.ndviCalc.getGNDVI() + " BNDVI: " + this.ndviCalc.getBNDVI());
         }
         else{
-            jLResults.setText("No infrared image has selected!");
+            jLResults.setText("No infrared image was selected!");
         }
     }//GEN-LAST:event_jBCalcForAllImageActionPerformed
 
